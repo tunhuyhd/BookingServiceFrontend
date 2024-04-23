@@ -5,13 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './basic/components/login/login.component';
 import { SignupComponent } from './basic/components/signup/signup.component';
-import { NZ_I18N } from 'ng-zorro-antd/i18n';
+import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
 import { vi_VN } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import vi from '@angular/common/locales/vi';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { provideHttpClient } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgZorroAntdModule } from './NgZorroAntdModule';
+import { SignupClientComponent } from './basic/components/signup-client/signup-client.component';
 
 registerLocaleData(vi);
 
@@ -19,16 +22,21 @@ registerLocaleData(vi);
   declarations: [
     AppComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    SignupClientComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    NgZorroAntdModule,
+    ReactiveFormsModule
   ],
   providers: [
     provideClientHydration(),
-    { provide: NZ_I18N, useValue: vi_VN },
+    { provide: NZ_I18N, useValue: en_US },
     provideAnimationsAsync(),
     provideHttpClient()
   ],
